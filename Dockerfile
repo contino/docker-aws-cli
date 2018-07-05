@@ -1,6 +1,7 @@
 FROM alpine:3.6
 
 ENV AWS_CLI_VERSION=1.15.51
+ENV JP_VERSION=0.1.3
 
 RUN apk -v --no-cache --update add \
         python \
@@ -11,16 +12,16 @@ RUN apk -v --no-cache --update add \
         bash \
         make \
         curl \
+        wget \
         zip \
         git \
         && \
     pip install --no-cache-dir --upgrade awscli==$AWS_CLI_VERSION && \
     update-ca-certificates && \
     apk -v --purge del py-pip
-RUN echo 'http://dl-cdn.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories && \
-    apk -v --no-cache --update add py-jmespath 
+RUN curl -o /usr/local/bin/jp -L https://github.com/jmespath/jp/releases/download/$JP_VERSION/jp-linux-amd64 && \
+    chmod +x /usr/local/bin/jp
 
 VOLUME /root/.aws
-VOLUME /project
-WORKDIR /project
+
 ENTRYPOINT ["aws"]
