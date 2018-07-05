@@ -20,6 +20,8 @@ Using docker-compose:
         - ~/.aws:/root/.aws
         - .:/opt/app:rw
 
+And run `docker-compose run aws --version`
+
 ## Build 
 Update the `AWS_CLI_VERSION` in both `Makefile` and `DockerFile`. The run:
 
