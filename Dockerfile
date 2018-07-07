@@ -22,6 +22,8 @@ RUN apk -v --no-cache --update add \
 RUN curl -o /usr/local/bin/jp -L https://github.com/jmespath/jp/releases/download/$JP_VERSION/jp-linux-amd64 && \
     chmod +x /usr/local/bin/jp
 
-VOLUME /root/.aws
+VOLUME [ "/root/.aws" ]
+VOLUME [ "/opt/app" ]
+WORKDIR /opt/app
 
-ENTRYPOINT ["aws"]
+CMD ["aws", "--version"]

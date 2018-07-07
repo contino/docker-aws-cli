@@ -2,19 +2,20 @@
 Containerised AWS CLI to ensure consistent local development and simple CD pipelines.
 
 ## Usage
-Run as a command using default `aws` entrypoint:
+Run as a command using `aws` as entrypoint:
 
-    docker run --rm contino/aws-cli --version
+    docker run --rm --entrypoint aws contino/aws-cli --version
 
-Run as a shell by overwriting default entrypoint and mounting current directory:
+Run as a shell and mount `.aws` folder and current directory as volumes:
 
-    docker run --rm -it -v ~/.aws:/root/.aws -v $(pwd):/opt/app --entrypoint bash contino/aws-cli
+    docker run --rm -it -v ~/.aws:/root/.aws -v $(pwd):/opt/app contino/aws-cli bash
 
 Using docker-compose:
 
     aws:
         image: contino/aws-cli
         env_file: .env
+        entrypoint: aws
         working_dir: /opt/app
         volumes:
         - ~/.aws:/root/.aws
