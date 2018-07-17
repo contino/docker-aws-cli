@@ -1,6 +1,6 @@
-FROM alpine:3.6
+FROM alpine:3.8
 
-ENV AWS_CLI_VERSION=1.15.51
+ENV AWS_CLI_VERSION=1.15.59
 ENV JP_VERSION=0.1.3
 
 RUN apk -v --no-cache --update add \
