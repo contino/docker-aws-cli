@@ -15,6 +15,8 @@ RUN apk -v --no-cache --update add \
         wget \
         zip \
         git \
+        openssh-client \
+        rsync \
         && \
     pip install --no-cache-dir --upgrade awscli==$AWS_CLI_VERSION && \
     update-ca-certificates && \
