@@ -1,6 +1,6 @@
 FROM alpine:3.8
 
-ENV AWS_CLI_VERSION=1.16.90
+ENV AWS_CLI_VERSION=1.16.116
 ENV JP_VERSION=0.1.3
 
 RUN apk -v --no-cache --update add \
@@ -17,6 +17,7 @@ RUN apk -v --no-cache --update add \
         git \
         openssh-client \
         rsync \
+        jq \
         && \
     pip install --no-cache-dir --upgrade awscli==$AWS_CLI_VERSION && \
     update-ca-certificates && \
