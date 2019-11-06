@@ -5,6 +5,7 @@ ENV JP_VERSION=0.1.3
 
 RUN apk -v --no-cache --update add \
         python \
+	python3 \
         py-pip \
         ca-certificates \
         groff \
