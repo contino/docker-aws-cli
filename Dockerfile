@@ -1,25 +1,25 @@
 FROM alpine:3.10
 
-ENV AWS_CLI_VERSION=1.17.0
+ENV AWS_CLI_VERSION=1.18.117
 ENV JP_VERSION=0.1.3
 
 RUN apk -v --no-cache --update add \
-        python \
-	python3 \
-        py-pip \
-        ca-certificates \
-        groff \
-        less \
-        bash \
-        make \
-        curl \
-        wget \
-        zip \
-        git \
-        openssh-client \
-        rsync \
-        jq \
-        && \
+    python \
+    python3 \
+    py-pip \
+    ca-certificates \
+    groff \
+    less \
+    bash \
+    make \
+    curl \
+    wget \
+    zip \
+    git \
+    openssh-client \
+    rsync \
+    jq \
+    && \
     pip install --no-cache-dir --upgrade awscli==$AWS_CLI_VERSION && \
     update-ca-certificates && \
     apk -v --purge del py-pip
